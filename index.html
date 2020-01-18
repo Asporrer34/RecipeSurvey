@@ -22,26 +22,33 @@
       max-width: 1920px;
     }
 
+    .freebirdFormviewerViewItemsItemItem {
+      max-width: 1920px;
+    }
+
   </style>
 
   <!--<script src="https://googleformrestyler.apixml.net/GoogleFormStyler.js"
           form="https://docs.google.com/forms/d/e/1FAIpQLSfwP4SxR4XM63PukzBx5b7jP2DeR0wuq_VwP93C9n6mOvJ2sg/viewform?embedded=true">
   </script>-->
 
-  <script>    
+  <script>
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "https://googleformrestyler.apixml.net/corsProxy.aspx?base64Url=aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTZndQNFN4UjRYTTYzUHVrekJ4NWI3alAyRGVSMHd1cV9Wd1A5M0M5bjZtT3ZKMnNnL3ZpZXdmb3JtP2VtYmVkZGVkPXRydWU=");
     xhr.onload = function() {
         document.write(xhr.response);
-           
+
     };
     xhr.send();
-    
+
     setTimeout(function(){
-       let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
-        let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper")
+        let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
+        let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper");
+
+        document.getElementsByClassName("freebirdFormviewerViewFormCard")[0].style.width = "1920px";
 
         for(let i = 0; i < images.length; i++) {
+          console.log(images[i]);
           images[i].style.width = "1920px";
           //images[i].style.maxWidth = "100vw";
           images[i].style.height = "1080px";
@@ -66,7 +73,6 @@
 
         var count = 0;
         for(let item of itemListItems) {
-          console.log(count);
           if(count < 6) {
             div1.appendChild(item.cloneNode(true));
           } else if (count < 12) {
@@ -100,7 +106,7 @@
           itemList.children[0].style.display = "none";
           itemList.children[1].style.display = "none";
         }
-      },5000);
+      },3000);
   </script>
 
 </head>
