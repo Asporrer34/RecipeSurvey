@@ -24,11 +24,19 @@
 
   </style>
 
-  <script src="https://googleformrestyler.apixml.net/GoogleFormStyler.js"
+  <!--<script src="https://googleformrestyler.apixml.net/GoogleFormStyler.js"
           form="https://docs.google.com/forms/d/e/1FAIpQLSfwP4SxR4XM63PukzBx5b7jP2DeR0wuq_VwP93C9n6mOvJ2sg/viewform?embedded=true">
-  </script>
+  </script>-->
 
-  <script>
+  <script>    
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://googleformrestyler.apixml.net/corsProxy.aspx?base64Url=aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTZndQNFN4UjRYTTYzUHVrekJ4NWI3alAyRGVSMHd1cV9Wd1A5M0M5bjZtT3ZKMnNnL3ZpZXdmb3JtP2VtYmVkZGVkPXRydWU=");
+    xhr.onload = function() {
+        document.write(xhr.response);
+    };
+    xhr.send();
+    
+    
     let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
     let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper")
 
