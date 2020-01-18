@@ -33,74 +33,71 @@
     xhr.open("GET", "https://googleformrestyler.apixml.net/corsProxy.aspx?base64Url=aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTZndQNFN4UjRYTTYzUHVrekJ4NWI3alAyRGVSMHd1cV9Wd1A5M0M5bjZtT3ZKMnNnL3ZpZXdmb3JtP2VtYmVkZGVkPXRydWU=");
     xhr.onload = function() {
         document.write(xhr.response);
+      
+        let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
+        let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper")
+
+        for(let i = 0; i < images.length; i++) {
+          images[i].style.width = "1920px";
+          //images[i].style.maxWidth = "100vw";
+          images[i].style.height = "1080px";
+          imageContainers[i].style.width = "1920px";
+          imageContainers[i].style.height = "1080px";
+          //imageContainers[i].style.maxWidth = "100vw";
+
+          let imagelink = images[i].src;
+          imagelink = imagelink.replace("=w740", "=w1920");
+          images[i].src = imagelink;
+        }
+
+        document.getElementsByClassName("freebirdFormviewerViewCenteredContent")[0].style.margin = "0px";
+
+        let itemList = document.getElementsByClassName("freebirdFormviewerViewItemList")[0];
+
+        let div1 = document.createElement("div");
+        let div2 = document.createElement("div");
+        let div3 = document.createElement("div");
+
+        let itemListItems = itemList.childNodes;
+
+        var count = 0;
+        for(let item of itemListItems) {
+          console.log(count);
+          if(count < 6) {
+            div1.appendChild(item.cloneNode(true));
+          } else if (count < 12) {
+            div2.appendChild(item.cloneNode(true));
+          } else {
+            div3.appendChild(item.cloneNode(true));
+          }
+          count++;
+        }
+
+
+        while(itemList.firstChild) {
+          itemList.removeChild(itemList.firstChild);
+        }
+
+        itemList.appendChild(div1);
+        itemList.appendChild(div2);
+        itemList.appendChild(div3);
+
+        let randomInt = Math.floor(Math.random() * 3);
+
+        console.log(randomInt);
+
+        if(randomInt == 0) {
+          itemList.children[1].style.display = "none";
+          itemList.children[2].style.display = "none";
+        } else if (randomInt == 1) {
+          itemList.children[0].style.display = "none";
+          itemList.children[2].style.display = "none";
+        } else {
+          itemList.children[0].style.display = "none";
+          itemList.children[1].style.display = "none";
+        }
     };
     xhr.send();
-    
-    
-    let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
-    let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper")
-
-    for(let i = 0; i < images.length; i++) {
-      images[i].style.width = "1920px";
-      //images[i].style.maxWidth = "100vw";
-      images[i].style.height = "1080px";
-      imageContainers[i].style.width = "1920px";
-      imageContainers[i].style.height = "1080px";
-      //imageContainers[i].style.maxWidth = "100vw";
-
-      let imagelink = images[i].src;
-      imagelink = imagelink.replace("=w740", "=w1920");
-      images[i].src = imagelink;
-    }
-
-    document.getElementsByClassName("freebirdFormviewerViewCenteredContent")[0].style.margin = "0px";
-
-    let itemList = document.getElementsByClassName("freebirdFormviewerViewItemList")[0];
-
-    let div1 = document.createElement("div");
-    let div2 = document.createElement("div");
-    let div3 = document.createElement("div");
-
-    let itemListItems = itemList.childNodes;
-
-    var count = 0;
-    for(let item of itemListItems) {
-      console.log(count);
-      if(count < 6) {
-        div1.appendChild(item.cloneNode(true));
-      } else if (count < 12) {
-        div2.appendChild(item.cloneNode(true));
-      } else {
-        div3.appendChild(item.cloneNode(true));
-      }
-      count++;
-    }
-
-
-    while(itemList.firstChild) {
-      itemList.removeChild(itemList.firstChild);
-    }
-
-    itemList.appendChild(div1);
-    itemList.appendChild(div2);
-    itemList.appendChild(div3);
-
-    let randomInt = Math.floor(Math.random() * 3);
-
-    console.log(randomInt);
-
-    if(randomInt == 0) {
-      itemList.children[1].style.display = "none";
-      itemList.children[2].style.display = "none";
-    } else if (randomInt == 1) {
-      itemList.children[0].style.display = "none";
-      itemList.children[2].style.display = "none";
-    } else {
-      itemList.children[0].style.display = "none";
-      itemList.children[1].style.display = "none";
-    }
-
-    //console.log();
   </script>
 
 </head>
