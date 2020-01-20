@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .freebirdFormviewerViewFooterFooterContainer {
+    display: none !important
+    }
+
+    .freebirdFormviewerViewNumberedItemContainer {
+      padding-bottom: 50px;
+      display: flex;
+    }
+
+    .freebirdFormviewerViewCenteredContent {
+      width: 1920px;
+      margin-left: 0px;
+      display: flex;
+      max-width: 100vw;
+    }
+    .freebirdFormviewerViewFormContentWrapper {
+      padding-left: 0px;
+      max-width: 1920px;
+    }
+
+    .freebirdFormviewerViewItemsItemItem {
+      max-width: 1920px;
+    }
+
+  </style>
+
+  <!--<script src="https://googleformrestyler.apixml.net/GoogleFormStyler.js"
+          form="https://docs.google.com/forms/d/e/1FAIpQLSfwP4SxR4XM63PukzBx5b7jP2DeR0wuq_VwP93C9n6mOvJ2sg/viewform?embedded=true">
+  </script>-->
+
+  <script>
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://googleformrestyler.apixml.net/corsProxy.aspx?base64Url=aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZm9ybXMvZC9lLzFGQUlwUUxTZUhXaFZxMXhBN3N4VDQ5YjRaUklzdGNzTlB2Nm1fZGVmX0ZqUUZvb0R4NXhyejd3L3ZpZXdmb3JtP3VzcD1zZl9saW5r");
+    xhr.onload = function() {
+        document.write(xhr.response);
+
+    };
+    xhr.send();
+
+    setTimeout(function(){
+        let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
+        let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper");
+
+        document.getElementsByClassName("freebirdFormviewerViewFormCard")[0].style.width = "99vw";
+
+
+        for(let i = 0; i < images.length; i++) {
+          console.log(images[i]);
+          images[i].style.width = "1920px";
+          //images[i].style.maxWidth = "100vw";
+          images[i].style.height = "auto";
+          imageContainers[i].style.width = "1920px";
+          imageContainers[i].style.height = "auto";
+          //imageContainers[i].style.maxWidth = "100vw";
+
+          let imagelink = images[i].src;
+          imagelink = imagelink.replace("=w740", "=w1920");
+          images[i].src = imagelink;
+        }
+
+        document.getElementsByClassName("freebirdFormviewerViewCenteredContent")[0].style.margin = "1px";
+
+        let itemList = document.getElementsByClassName("freebirdFormviewerViewItemList")[0];
+
+        let div1 = document.createElement("div");
+        let div2 = document.createElement("div");
+        let div3 = document.createElement("div");
+
+        let itemListItems = itemList.childNodes;
+
+        var count = 0;
+        for(let item of itemListItems) {
+          if(count < 6) {
+            div1.appendChild(item.cloneNode(true));
+          } else if (count < 12) {
+            div2.appendChild(item.cloneNode(true));
+          } else {
+            div3.appendChild(item.cloneNode(true));
+          }
+          count++;
+        }
+
+
+        while(itemList.firstChild) {
+          itemList.removeChild(itemList.firstChild);
+        }
+
+        itemList.appendChild(div1);
+        itemList.appendChild(div2);
+        itemList.appendChild(div3);
+
+        let randomInt = Math.floor(Math.random() * 3);
+
+        console.log(randomInt);
+
+        if(randomInt == 0) {
+          itemList.children[1].style.display = "none";
+          itemList.children[2].style.display = "none";
+        } else if (randomInt == 1) {
+          itemList.children[0].style.display = "none";
+          itemList.children[2].style.display = "none";
+        } else {
+          itemList.children[0].style.display = "none";
+          itemList.children[1].style.display = "none";
+        }
+      },3000);
+  </script>
+
+</head>
+<body>
+
+
+
+
+
+
+
+</body>
+</html>
