@@ -45,15 +45,16 @@
         let images = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImage");
         let imageContainers = document.getElementsByClassName("freebirdFormviewerViewItemsEmbeddedobjectImageWrapper");
 
-        document.getElementsByClassName("freebirdFormviewerViewFormCard")[0].style.width = "1920px";
+        document.getElementsByClassName("freebirdFormviewerViewFormCard")[0].style.width = "99vw";
+
 
         for(let i = 0; i < images.length; i++) {
           console.log(images[i]);
           images[i].style.width = "1920px";
           //images[i].style.maxWidth = "100vw";
-          images[i].style.height = "1080px";
+          images[i].style.height = "auto";
           imageContainers[i].style.width = "1920px";
-          imageContainers[i].style.height = "1080px";
+          imageContainers[i].style.height = "auto";
           //imageContainers[i].style.maxWidth = "100vw";
 
           let imagelink = images[i].src;
@@ -61,7 +62,7 @@
           images[i].src = imagelink;
         }
 
-        document.getElementsByClassName("freebirdFormviewerViewCenteredContent")[0].style.margin = "0px";
+        document.getElementsByClassName("freebirdFormviewerViewCenteredContent")[0].style.margin = "1px";
 
         let itemList = document.getElementsByClassName("freebirdFormviewerViewItemList")[0];
 
@@ -106,7 +107,7 @@
           itemList.children[0].style.display = "none";
           itemList.children[1].style.display = "none";
         }
-      },3000);
+      },1000);
   </script>
 
 </head>
